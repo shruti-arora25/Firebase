@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/registerFrag2">
+    <fragment
+        android:id="@+id/registerFrag2"
+        android:name="com.example.firebasetwo.RegisterFrag"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFrag2_to_homeFrag2"
+            app:destination="@id/homeFrag2" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFrag2"
+        android:name="com.example.firebasetwo.HomeFrag"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+</navigation>
