@@ -7,15 +7,102 @@
     android:orientation="vertical">
 
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="22sp"
-        android:gravity="center"
-        />
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-<android.widget.Button
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp">
+
+
+            <EditText
+                android:id="@+id/emailSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_bg"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="username"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp">
+
+
+            <EditText
+                android:id="@+id/passwordSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_bg"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="30dp">
+
+
+            <EditText
+                android:id="@+id/confrmpasswordSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_bg"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Confirm password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+
+        <android.widget.Button
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Register"
+            android:textSize="25sp">
+
+        </android.widget.Button>
+
+        <android.widget.Button
+            android:id="@+id/AlreadyAccLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Already have an account? Log In "/>
+
+
+
+
+        <android.widget.Button
     android:id="@+id/GoogleClick"
     android:layout_gravity="center"
     android:gravity="center"
@@ -28,5 +115,7 @@
     android:text="Register using google account"
     />
 
+
+</LinearLayout>
 
 </LinearLayout>

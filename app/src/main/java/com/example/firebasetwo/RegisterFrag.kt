@@ -73,8 +73,38 @@ class RegisterFrag : Fragment() {
 
         }
 
+
+
+        bind.register.setOnClickListener {
+            val email=bind.emailSignUp.text.toString()
+            val password=bind.passwordSignUp.text.toString()
+            val confrmpw=bind.confrmpasswordSignUp.text.toString()
+            if (email.isNotEmpty()&& password.isNotEmpty()&&confrmpw.isNotEmpty()){
+                if (password==confrmpw)
+                {
+                    fbAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            findNavController().navigate(R.id.action_registerFrag2_to_homeFrag2,null,NavOptions.Builder().setPopUpTo(R.id.registerFrag2,true).build())
+                    }
+
+                        else {
+                            Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+
+                }}
+        }
+        bind.AlreadyAccLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFrag2_to_signInFrag,null,NavOptions.Builder().setPopUpTo(R.id.registerFrag2,true).build())
+        }
+
+
         return bind.root
     }
+
+
 
     private fun updateUI(account:GoogleSignInAccount){
 
