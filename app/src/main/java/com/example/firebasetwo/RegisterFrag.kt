@@ -222,11 +222,12 @@ class RegisterFrag : Fragment() {
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
-            if (e is FirebaseAuthInvalidCredentialsException){
-                Toast.makeText(context,"Verification failed"+e.toString(),Toast.LENGTH_SHORT).show()
-            }
-            else if (e is FirebaseTooManyRequestsException){
-                Toast.makeText(context,"On Verification failed"+e.toString(),Toast.LENGTH_SHORT).show()
+            if (e is FirebaseAuthInvalidCredentialsException) {
+                Toast.makeText(context, "Verification failed" + e.toString(), Toast.LENGTH_SHORT)
+                    .show()
+            } else if (e is FirebaseTooManyRequestsException) {
+                Toast.makeText(context, "On Verification failed" + e.toString(), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -234,10 +235,13 @@ class RegisterFrag : Fragment() {
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
-            progressBar.visibility=View.INVISIBLE
+            progressBar.visibility = View.INVISIBLE
 
-            findNavController().navigate(R.id.action_registerFrag2_to_displayOtp,null,NavOptions.Builder().setPopUpTo(R.id.registerFrag2,true).build())
-
+            findNavController().navigate(
+                R.id.action_registerFrag2_to_displayOtp,
+                null,
+                NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build()
+            )
 
         }
 
@@ -247,7 +251,13 @@ class RegisterFrag : Fragment() {
 
         fbAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-                val user = it.result.user
+
+
+                Toast.makeText(context, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(
+                    R.id.action_registerFrag2_to_homeFrag2, null,
+                    NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build()
+                )
             } else {
                 if (it.exception is FirebaseAuthInvalidCredentialsException) {
                     Toast.makeText(context, "Code is not valid", Toast.LENGTH_SHORT).show()
@@ -257,6 +267,4 @@ class RegisterFrag : Fragment() {
 
         }
     }
-
-
 }

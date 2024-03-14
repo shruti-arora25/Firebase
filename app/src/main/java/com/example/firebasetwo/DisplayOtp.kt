@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.firebasetwo.databinding.FragmentDisplayOtpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 
@@ -47,7 +50,9 @@ class DisplayOtp : Fragment() {
 
         if (typedOtp.isNotEmpty()){
             if (typedOtp.length==6){
-                val credential:PhoneAuthCredential=PhoneAuthProvider.getCredential(typedOtp,O)
+                //val credential:PhoneAuthCredential=PhoneAuthProvider.getCredential(typedOtp,)
+                //signInWithPhoneCredentials(credential)
+
 
 
             }
@@ -110,6 +115,26 @@ class DisplayOtp : Fragment() {
         Inputnum6.addTextChangedListener(EditTextWatcher(Inputnum6))
 
 
+    }
+    private fun signInWithPhoneCredentials(credential: PhoneAuthCredential) {
+
+        fbAuth.signInWithCredential(credential).addOnCompleteListener {
+            if (it.isSuccessful) {
+
+
+                Toast.makeText(context,"Authenticate Successfully",Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_registerFrag2_to_homeFrag2,null,
+                    NavOptions.Builder().setPopUpTo(R.id.registerFrag2,true).build())
+            }
+
+            else {
+                if (it.exception is FirebaseAuthInvalidCredentialsException) {
+                    Toast.makeText(context, "Code is not valid", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
+        }
     }
 
 
