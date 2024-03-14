@@ -18,6 +18,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.firestore
+import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -57,10 +58,11 @@ class signInFrag : Fragment() {
 
             var email = bind.enailLogin.text.toString()
             var password = bind.passwordLogin.text.toString()
+            var hashPw=hashPassword(password)
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        save(email, password)
+                        save(email, hashPw)
                     }
                 }
 
@@ -140,6 +142,13 @@ class signInFrag : Fragment() {
 
                 }
             }
+    }
+
+    fun hashPassword(password: String): String {
+        val bytes = password.toByteArray()
+        val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        return digest.fold("", { str, it -> str + "%02x".format(it) })
     }
 
 }

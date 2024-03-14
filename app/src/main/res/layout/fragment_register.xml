@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterFrag"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".RegisterFrag">
 
 
     <LinearLayout
@@ -97,25 +97,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Already have an account? Log In "/>
-
-
+            android:text="Already have an account? Log In " />
 
 
         <android.widget.Button
-    android:id="@+id/GoogleClick"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/text_bg"
-    android:layout_margin="11dp"
-    android:padding="11dp"
-    android:drawableStart="@drawable/search"
-    android:text="Register using google account"
-    />
+            android:id="@+id/GoogleClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="11dp"
+            android:background="@drawable/text_bg"
+            android:drawableStart="@drawable/search"
+            android:gravity="center"
+            android:padding="11dp"
+            android:text="Register using google account" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="11dp"
+            android:text="Register using Mobile Number"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/text_bg"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91"
+                android:layout_marginEnd="18dp"
+
+                />
 
 
-</LinearLayout>
+            <EditText
+                android:id="@+id/textPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter Your Number"
+                android:inputType="phone" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/progressBar"
+            />
+
+        <android.widget.Button
+            android:id="@+id/sendOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send OTP"
+            android:layout_gravity="center"
+
+            />
+    </LinearLayout>
 
 </LinearLayout>
