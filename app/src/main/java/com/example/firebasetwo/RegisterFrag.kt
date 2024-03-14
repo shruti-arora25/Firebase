@@ -237,6 +237,8 @@ class RegisterFrag : Fragment() {
         ) {
             progressBar.visibility = View.INVISIBLE
 
+
+
             findNavController().navigate(
                 R.id.action_registerFrag2_to_displayOtp,
                 null,

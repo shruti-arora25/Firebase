@@ -41,5 +41,13 @@
         android:id="@+id/displayOtp"
         android:name="com.example.firebasetwo.DisplayOtp"
         android:label="fragment_display_otp"
-        tools:layout="@layout/fragment_display_otp" />
+        tools:layout="@layout/fragment_display_otp" >
+        <argument
+            android:name="OTP"
+            app:argType="string" />
+        <argument android:name="Token" />
+        <argument
+            android:name="Number"
+            app:argType="string" />
+    </fragment>
 </navigation>
