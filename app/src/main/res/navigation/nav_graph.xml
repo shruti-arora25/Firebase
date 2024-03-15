@@ -53,5 +53,8 @@
         <action
             android:id="@+id/action_displayOtp_to_homeFrag2"
             app:destination="@id/homeFrag2" />
+        <argument
+            android:name="token"
+            app:argType="com.google.firebase.auth.PhoneAuthProvider$ForceResendingToken" />
     </fragment>
 </navigation>

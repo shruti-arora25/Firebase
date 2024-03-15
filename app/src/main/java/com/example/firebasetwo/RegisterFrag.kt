@@ -129,6 +129,8 @@ class RegisterFrag : Fragment() {
                 if (number.length == 10) {
                     number = "+91${number}"
                     progressBar.visibility = View.VISIBLE
+
+
                     val options = PhoneAuthOptions.newBuilder(fbAuth)
                         .setPhoneNumber(number) // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -251,14 +253,9 @@ class RegisterFrag : Fragment() {
 
             progressBar.visibility = View.INVISIBLE
             val directions =
-                RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId, number)
+                RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId, number,token)
             findNavController().navigate(directions)
 
-//            findNavController().navigate(
-//                R.id.action_registerFrag2_to_displayOtp,
-//                null,
-//                NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build()
-//            )
 
         }
 

@@ -1,6 +1,8 @@
 package com.example.firebasetwo
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -14,10 +16,14 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.firebasetwo.databinding.FragmentDisplayOtpBinding
+import com.google.firebase.FirebaseException
+import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import java.util.concurrent.TimeUnit
 
 class DisplayOtp : Fragment() {
 
@@ -33,6 +39,7 @@ class DisplayOtp : Fragment() {
     private val args: DisplayOtpArgs by navArgs()
 
     private var idOtp = ""
+    private lateinit var token: PhoneAuthProvider.ForceResendingToken
     private var number = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +55,7 @@ class DisplayOtp : Fragment() {
 
         init()
         addTextChangeListener()
+        textVisibility()
 
 
 
@@ -73,6 +81,11 @@ class DisplayOtp : Fragment() {
 
         }
 
+        bind.resendCode.setOnClickListener {
+            resendCodeF()
+            textVisibility()
+        }
+
 
 
         return bind.root
@@ -89,6 +102,7 @@ class DisplayOtp : Fragment() {
 
         idOtp = args.otp
         number = args.number
+        token = args.token
     }
 
     inner class EditTextWatcher(private val view: View) : TextWatcher {
@@ -127,7 +141,7 @@ class DisplayOtp : Fragment() {
     }
 
     private fun signInWithPhoneCredentials(credential: PhoneAuthCredential) {
-        Log.e("Tag--------------->","Authentication Complete")
+        Log.e("Tag--------------->", "Authentication Complete")
 
         fbAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
@@ -145,6 +159,77 @@ class DisplayOtp : Fragment() {
 
 
         }
+    }
+
+    private fun resendCodeF() {
+        val options = PhoneAuthOptions.newBuilder(fbAuth)
+            .setPhoneNumber(number)
+            .setForceResendingToken(token)
+            .setActivity(requireActivity())
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setCallbacks(callbacks)
+            .build()
+
+        PhoneAuthProvider.verifyPhoneNumber(options)
+
+    }
+
+
+    private var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+            signInWithPhoneCredentials(credential)
+
+
+        }
+
+        override fun onVerificationFailed(e: FirebaseException) {
+            if (e is FirebaseAuthInvalidCredentialsException) {
+                Log.d("Tag------->", "failed")
+
+                Toast.makeText(
+                    context,
+                    "Verification failed due to " + e.toString(),
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+
+            } else if (e is FirebaseTooManyRequestsException) {
+                Toast.makeText(context, "On Verification failed" + e.toString(), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+        override fun onCodeSent(OTP: String, Token: PhoneAuthProvider.ForceResendingToken) {
+
+            idOtp = OTP
+            token = Token
+
+
+        }
+
+
+    }
+
+    private fun textVisibility() {
+
+        Inputnum1.setText("")
+        Inputnum2.setText("")
+        Inputnum3.setText("")
+        Inputnum4.setText("")
+        Inputnum5.setText("")
+        Inputnum6.setText("")
+        bind.resendCode.visibility = View.INVISIBLE
+        bind.resendCode.isEnabled = false
+
+
+        Handler(Looper.myLooper()!!).postDelayed(
+            {
+                bind.resendCode.visibility = View.VISIBLE
+                bind.resendCode.isEnabled=true
+            }, 60000
+        )
+
+
     }
 
 
