@@ -136,6 +136,8 @@ class RegisterFrag : Fragment() {
                         .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
                         .build()
                     PhoneAuthProvider.verifyPhoneNumber(options)
+                    Log.d("Tag-------","Clicked")
+
                 } else {
                     Toast.makeText(context, "Enter 10 digits number", Toast.LENGTH_SHORT).show()
                 }
@@ -218,12 +220,16 @@ class RegisterFrag : Fragment() {
 
     private var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+
+            Log.d("Tag------->", "vfComple")
             signInWithPhoneCredentials(credential)
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
             if (e is FirebaseAuthInvalidCredentialsException) {
-                Toast.makeText(context, "Verification failed" + e.toString(), Toast.LENGTH_SHORT)
+                Log.d("Tag------->", "failed")
+
+                Toast.makeText(context, "Verification failed due to " + e.toString(), Toast.LENGTH_SHORT)
                     .show()
             } else if (e is FirebaseTooManyRequestsException) {
                 Toast.makeText(context, "On Verification failed" + e.toString(), Toast.LENGTH_SHORT)
@@ -235,15 +241,19 @@ class RegisterFrag : Fragment() {
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
+
+
+            Log.d("Tag------->", "codesent")
+
             progressBar.visibility = View.INVISIBLE
+            val directions=RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId,number)
+            findNavController().navigate(directions)
 
-
-
-            findNavController().navigate(
-                R.id.action_registerFrag2_to_displayOtp,
-                null,
-                NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build()
-            )
+//            findNavController().navigate(
+//                R.id.action_registerFrag2_to_displayOtp,
+//                null,
+//                NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build()
+//            )
 
         }
 
