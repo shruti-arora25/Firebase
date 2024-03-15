@@ -136,7 +136,7 @@ class RegisterFrag : Fragment() {
                         .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
                         .build()
                     PhoneAuthProvider.verifyPhoneNumber(options)
-                    Log.d("Tag-------","Clicked")
+                    Log.d("Tag-------", "Clicked")
 
                 } else {
                     Toast.makeText(context, "Enter 10 digits number", Toast.LENGTH_SHORT).show()
@@ -229,7 +229,11 @@ class RegisterFrag : Fragment() {
             if (e is FirebaseAuthInvalidCredentialsException) {
                 Log.d("Tag------->", "failed")
 
-                Toast.makeText(context, "Verification failed due to " + e.toString(), Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    context,
+                    "Verification failed due to " + e.toString(),
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             } else if (e is FirebaseTooManyRequestsException) {
                 Toast.makeText(context, "On Verification failed" + e.toString(), Toast.LENGTH_SHORT)
@@ -246,7 +250,8 @@ class RegisterFrag : Fragment() {
             Log.d("Tag------->", "codesent")
 
             progressBar.visibility = View.INVISIBLE
-            val directions=RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId,number)
+            val directions =
+                RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId, number)
             findNavController().navigate(directions)
 
 //            findNavController().navigate(

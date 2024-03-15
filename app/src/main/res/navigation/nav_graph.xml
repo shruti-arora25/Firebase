@@ -50,5 +50,8 @@
         <argument
             android:name="number"
             app:argType="string" />
+        <action
+            android:id="@+id/action_displayOtp_to_homeFrag2"
+            app:destination="@id/homeFrag2" />
     </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.example.firebasetwo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,6 @@ class DisplayOtp : Fragment() {
     private val args: DisplayOtpArgs by navArgs()
 
     private var idOtp = ""
-    private var token = 0
     private var number = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,11 +54,12 @@ class DisplayOtp : Fragment() {
         bind.verify.setOnClickListener {
 
             val typedOtp =
-                Inputnum1.text.toString() + Inputnum2.text.toString() + Inputnum3.text.toString() + Inputnum4.text.toString() + Inputnum5.text.toString() + Inputnum6.text.toString()
+                (Inputnum1.text.toString() + Inputnum2.text.toString() + Inputnum3.text.toString() + Inputnum4.text.toString() + Inputnum5.text.toString() + Inputnum6.text.toString())
 
             if (typedOtp.isNotEmpty()) {
                 if (typedOtp.length == 6) {
-                    val credential:PhoneAuthCredential=PhoneAuthProvider.getCredential(idOtp,typedOtp)
+                    val credential: PhoneAuthCredential =
+                        PhoneAuthProvider.getCredential(idOtp, typedOtp)
                     signInWithPhoneCredentials(credential)
 
 
@@ -86,8 +87,8 @@ class DisplayOtp : Fragment() {
         Inputnum5 = bind.num5
         Inputnum6 = bind.num6
 
-        idOtp=args.otp
-        number=args.number
+        idOtp = args.otp
+        number = args.number
     }
 
     inner class EditTextWatcher(private val view: View) : TextWatcher {
@@ -126,15 +127,15 @@ class DisplayOtp : Fragment() {
     }
 
     private fun signInWithPhoneCredentials(credential: PhoneAuthCredential) {
+        Log.e("Tag--------------->","Authentication Complete")
 
         fbAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
 
-
                 Toast.makeText(context, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(
-                    R.id.action_registerFrag2_to_homeFrag2, null,
-                    NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build()
+                    R.id.action_displayOtp_to_homeFrag2, null,
+                    NavOptions.Builder().setPopUpTo(R.id.displayOtp, true).build()
                 )
             } else {
                 if (it.exception is FirebaseAuthInvalidCredentialsException) {
