@@ -23,7 +23,7 @@ class HomeFrag : Fragment() {
     private lateinit var signInC: GoogleSignInClient
 
     private val args: HomeFragArgs by navArgs()
-    private var EmailAddress=""
+    private var emailAddress=""
 
 
 
@@ -49,21 +49,17 @@ class HomeFrag : Fragment() {
         val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)?:return bind.root
 
 
-        Log.d("TAG------------>,",EmailAddress)
+        Log.d("TAG------------>,",emailAddress)
 
-        val isLogin = sharedPref.getString("EmailAddress", "1")
+        val isLogin = sharedPref.getString("emailAddress", "1")
 
-
-        var EmailAddress:String? = args.emailId
-
+         emailAddress = args.emailId
 
         if (isLogin == "1") {
-
-
-            if (EmailAddress != null) {
+            if (fbAuth.currentUser != null) {
                 with(sharedPref.edit())
                 {
-                    putString("userEmail", EmailAddress)
+                    putString("userEmail", emailAddress)
                     apply()
                 }
             } else {
@@ -75,17 +71,17 @@ class HomeFrag : Fragment() {
 
             }
         } else {
+
             findNavController().navigate(R.id.homeFrag2)
 
-
         }
-
 
         signInC = GoogleSignIn.getClient(requireContext(), signinO)
 
         bind.SIGNOUTT.setOnClickListener {
 
-            sharedPref.edit().remove("PutEmail").apply {
+            sharedPref.edit().remove("userEmail").apply()
+
                 findNavController().navigate(
                     R.id.action_homeFrag2_to_signInFrag,
                     null,
@@ -109,7 +105,7 @@ class HomeFrag : Fragment() {
 
             }
 
-        }
+
 
 
         return bind.root

@@ -113,8 +113,7 @@ class RegisterFrag : Fragment() {
         }
         bind.AlreadyAccLogin.setOnClickListener {
 
-            findNavController().navigate(R.id.action_registerFrag2_to_signInFrag,null,NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build()
-            )
+            findNavController().navigate(R.id.action_registerFrag2_to_signInFrag,null,NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build() )
         }
 
 
@@ -163,8 +162,7 @@ class RegisterFrag : Fragment() {
         }
     }
 
-    private fun save(userName: String?, userEmail: String?) {
-
+    private fun save(userName: String?, userEmail: String) {
 
         val map = hashMapOf(
             "UserName" to userName,
