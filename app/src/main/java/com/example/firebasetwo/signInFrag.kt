@@ -1,6 +1,7 @@
 package com.example.firebasetwo
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.firebasetwo.databinding.FragmentSignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -29,6 +31,7 @@ class signInFrag : Fragment() {
     private lateinit var signinC: GoogleSignInClient
 
     var firestore = Firebase.firestore
+
 
     private var launcher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -82,7 +85,26 @@ class signInFrag : Fragment() {
         }
 
 
-
+//        val sharedPref=requireActivity().getPreferences(Context.MODE_PRIVATE)
+//        val isLogin=sharedPref.getString("email","1")
+//
+//
+//            if (isLogin=="1") {
+//                if (getemail != null) {
+//                    with(sharedPref.edit()) {
+//                        putString("Email", getemail)
+//                        apply()
+//                    }
+//
+//                } else {
+//
+//                }
+//            }
+//        else{
+//
+//            findNavController().navigate(R.id.action_signInFrag_to_homeFrag2,null,NavOptions.Builder().setPopUpTo(R.id.signInFrag,true).build())
+//
+//            }
 
         return bind.root
 

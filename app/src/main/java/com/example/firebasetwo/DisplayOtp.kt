@@ -58,7 +58,6 @@ class DisplayOtp : Fragment() {
         textVisibility()
 
 
-
         bind.verify.setOnClickListener {
 
             val typedOtp =
@@ -86,10 +85,9 @@ class DisplayOtp : Fragment() {
             textVisibility()
         }
 
-
-
         return bind.root
     }
+
 
     private fun init() {
         fbAuth = FirebaseAuth.getInstance()
@@ -121,12 +119,8 @@ class DisplayOtp : Fragment() {
                 R.id.num4 -> if (text.length == 1) Inputnum5.requestFocus() else if (text.isEmpty()) Inputnum1.requestFocus()
                 R.id.num5 -> if (text.length == 1) Inputnum6.requestFocus() else if (text.isEmpty()) Inputnum1.requestFocus()
                 R.id.num6 -> if (text.isEmpty()) Inputnum5.requestFocus()
-
             }
-
-
         }
-
     }
 
     private fun addTextChangeListener() {
@@ -203,11 +197,7 @@ class DisplayOtp : Fragment() {
 
             idOtp = OTP
             token = Token
-
-
         }
-
-
     }
 
     private fun textVisibility() {
@@ -228,9 +218,5 @@ class DisplayOtp : Fragment() {
                 bind.resendCode.isEnabled=true
             }, 60000
         )
-
-
     }
-
-
 }
