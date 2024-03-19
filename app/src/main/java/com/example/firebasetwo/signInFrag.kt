@@ -84,28 +84,6 @@ class signInFrag : Fragment() {
 
         }
 
-
-//        val sharedPref=requireActivity().getPreferences(Context.MODE_PRIVATE)
-//        val isLogin=sharedPref.getString("email","1")
-//
-//
-//            if (isLogin=="1") {
-//                if (getemail != null) {
-//                    with(sharedPref.edit()) {
-//                        putString("Email", getemail)
-//                        apply()
-//                    }
-//
-//                } else {
-//
-//                }
-//            }
-//        else{
-//
-//            findNavController().navigate(R.id.action_signInFrag_to_homeFrag2,null,NavOptions.Builder().setPopUpTo(R.id.signInFrag,true).build())
-//
-//            }
-
         return bind.root
 
     }
@@ -127,7 +105,6 @@ class signInFrag : Fragment() {
         }
             .addOnFailureListener {
 
-
             }
     }
 
@@ -145,7 +122,6 @@ class signInFrag : Fragment() {
                     val formatDate = sdf.format(Date(time))
 
                     save(userName, email, formatDate)
-
                 }
             }
         }

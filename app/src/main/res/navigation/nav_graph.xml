@@ -18,9 +18,6 @@
         <action
             android:id="@+id/action_registerFrag2_to_displayOtp"
             app:destination="@id/displayOtp" />
-        <action
-            android:id="@+id/action_registerFrag2_to_homeFrag22"
-            app:destination="@id/homeFrag2" />
     </fragment>
     <fragment
         android:id="@+id/homeFrag2"
@@ -30,9 +27,9 @@
         <action
             android:id="@+id/action_homeFrag2_to_signInFrag"
             app:destination="@id/signInFrag" />
-        <argument
-            android:name="EmailId"
-            app:argType="string" />
+<!--        <argument-->
+<!--            android:name="EmailId"-->
+<!--            app:argType="string" />-->
         <action
             android:id="@+id/action_homeFrag2_to_registerFrag2"
             app:destination="@id/registerFrag2" />

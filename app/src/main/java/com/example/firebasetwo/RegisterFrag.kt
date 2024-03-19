@@ -61,11 +61,11 @@ class RegisterFrag : Fragment() {
     val firestore = Firebase.firestore
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -111,6 +111,7 @@ class RegisterFrag : Fragment() {
                 }
             }
         }
+
         bind.AlreadyAccLogin.setOnClickListener {
 
             findNavController().navigate(R.id.action_registerFrag2_to_signInFrag,null,NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build() )
@@ -132,7 +133,6 @@ class RegisterFrag : Fragment() {
                         .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
                         .build()
                     PhoneAuthProvider.verifyPhoneNumber(options)
-                    Log.d("Tag-------", "Clicked")
 
                 } else {
                     Toast.makeText(context, "Enter 10 digits number", Toast.LENGTH_SHORT).show()
@@ -144,6 +144,8 @@ class RegisterFrag : Fragment() {
 
         return bind.root
     }
+
+
 
     private fun updateUI(account: GoogleSignInAccount) {
 
@@ -171,8 +173,9 @@ class RegisterFrag : Fragment() {
         firestore.collection("Registration").document("Google").set(map).addOnSuccessListener {
 
 
-            val directions =RegisterFragDirections.actionRegisterFrag2ToHomeFrag2(userEmail)
-            findNavController().navigate(directions)
+           // val directions =RegisterFragDirections.actionRegisterFrag2ToHomeFrag2(userEmail)
+            //findNavController().navigate(directions)
+            findNavController().navigate(R.id.homeFrag2)
         }
             .addOnFailureListener {
 
@@ -186,11 +189,9 @@ class RegisterFrag : Fragment() {
             "Password" to password
         )
         firestore.collection("Registration").document("CustomReg").set(maps).addOnSuccessListener {
-            Toast.makeText(context, "Registered Successfullly", Toast.LENGTH_SHORT).show()
-
-            val directions =RegisterFragDirections.actionRegisterFrag2ToHomeFrag2("email")
-            findNavController().navigate(directions)
-
+            Toast.makeText(context, "Registered Successfully", Toast.LENGTH_SHORT).show()
+//            val directions =RegisterFragDirections.actionRegisterFrag2ToHomeFrag2(email.toString())
+//            findNavController().navigate(directions)
         }
     }
 
@@ -231,12 +232,13 @@ class RegisterFrag : Fragment() {
             Log.d("Tag------->", "codesent")
 
             progressBar.visibility = View.INVISIBLE
-            val directions =
-                RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId, number,token)
+            val directions = RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId, number,token)
             findNavController().navigate(directions)
         }
-
     }
+
+
+
     private fun signInWithPhoneCredentials(credential: PhoneAuthCredential) {
 
         fbAuth.signInWithCredential(credential).addOnCompleteListener {

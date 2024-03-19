@@ -38,7 +38,9 @@ class DisplayOtp : Fragment() {
 
     private val args: DisplayOtpArgs by navArgs()
 
-    private var idOtp = ""
+
+
+    private var idOtp=""
     private lateinit var token: PhoneAuthProvider.ForceResendingToken
     private var number = ""
 
