@@ -25,11 +25,7 @@ class NotesActivity : AppCompatActivity() {
             val notes = bind.noteWrite.text.toString()
 
             if (notes.isNotEmpty()) {
-
-
                 val sharedEdit = sharedPref.edit()
-
-
                 sharedEdit.putString("Note", notes)
                 sharedEdit.apply()
 
@@ -49,10 +45,9 @@ class NotesActivity : AppCompatActivity() {
                 bind.displayNoteView.text="$storedN"
 
             }
-
-
-
     }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp()

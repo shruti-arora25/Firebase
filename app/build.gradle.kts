@@ -45,10 +45,19 @@ android {
 dependencies {
 
     implementation("com.google.firebase:firebase-firestore:24.10.3")
-    val nav_version = "2.7.7"
 
+    val nav_version = "2.7.7"
     val room_version = "2.6.1"
+
     implementation("androidx.room:room-runtime:$room_version")
+
+    implementation("androidx.room:room-ktx:$room_version")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9")
+
+
+
 
 
 

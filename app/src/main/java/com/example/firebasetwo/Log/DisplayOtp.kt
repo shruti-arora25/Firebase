@@ -35,8 +35,8 @@ class DisplayOtp : Fragment() {
     private lateinit var Inputnum4: android.widget.EditText
     private lateinit var Inputnum5: android.widget.EditText
     private lateinit var Inputnum6: android.widget.EditText
+    private val args:DisplayOtpArgs by navArgs()
 
-    private val args: com.example.firebasetwo.DisplayOtpArgs by navArgs()
 
 
 

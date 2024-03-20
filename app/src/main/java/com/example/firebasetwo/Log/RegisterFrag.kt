@@ -232,16 +232,13 @@ class RegisterFrag : Fragment() {
             Log.d("Tag------->", "codesent")
 
             progressBar.visibility = View.INVISIBLE
-            val directions =
-                com.example.firebasetwo.RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(
-                    verificationId,
+            val directions =RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId,
                     number,
                     token
                 )
             findNavController().navigate(directions)
         }
     }
-
 
 
     private fun signInWithPhoneCredentials(credential: PhoneAuthCredential) {
