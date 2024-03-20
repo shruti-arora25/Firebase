@@ -1,7 +1,6 @@
-package com.example.firebasetwo
+package com.example.firebasetwo.Log
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.example.firebasetwo.R
 import com.example.firebasetwo.databinding.FragmentSignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -136,7 +135,9 @@ class signInFrag : Fragment() {
         firestore.collection("Login Details").document("Details").set(map)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    findNavController().navigate(R.id.action_signInFrag_to_homeFrag2,null,NavOptions.Builder().setPopUpTo(R.id.signInFrag,true).build())
+                    findNavController().navigate(
+                        R.id.action_signInFrag_to_homeFrag2,null,NavOptions.Builder().setPopUpTo(
+                            R.id.signInFrag,true).build())
 
                 }
             }

@@ -1,7 +1,6 @@
-package com.example.firebasetwo
+package com.example.firebasetwo.Log
 
 import android.app.Activity
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,15 +11,14 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.example.firebasetwo.R
 import com.example.firebasetwo.databinding.FragmentRegisterBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.signin.SignInOptions
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -114,7 +112,9 @@ class RegisterFrag : Fragment() {
 
         bind.AlreadyAccLogin.setOnClickListener {
 
-            findNavController().navigate(R.id.action_registerFrag2_to_signInFrag,null,NavOptions.Builder().setPopUpTo(R.id.registerFrag2, true).build() )
+            findNavController().navigate(
+                R.id.action_registerFrag2_to_signInFrag,null,NavOptions.Builder().setPopUpTo(
+                    R.id.registerFrag2, true).build() )
         }
 
 
@@ -232,7 +232,12 @@ class RegisterFrag : Fragment() {
             Log.d("Tag------->", "codesent")
 
             progressBar.visibility = View.INVISIBLE
-            val directions = RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(verificationId, number,token)
+            val directions =
+                com.example.firebasetwo.RegisterFragDirections.actionRegisterFrag2ToDisplayOtp(
+                    verificationId,
+                    number,
+                    token
+                )
             findNavController().navigate(directions)
         }
     }

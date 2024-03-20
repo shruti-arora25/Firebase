@@ -6,7 +6,7 @@
     app:startDestination="@id/registerFrag2">
     <fragment
         android:id="@+id/registerFrag2"
-        android:name="com.example.firebasetwo.RegisterFrag"
+        android:name="com.example.firebasetwo.Log.RegisterFrag"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFrag2"
-        android:name="com.example.firebasetwo.HomeFrag"
+        android:name="com.example.firebasetwo.Log.HomeFrag"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInFrag"
-        android:name="com.example.firebasetwo.signInFrag"
+        android:name="com.example.firebasetwo.Log.signInFrag"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/displayOtp"
-        android:name="com.example.firebasetwo.DisplayOtp"
+        android:name="com.example.firebasetwo.Log.DisplayOtp"
         android:label="fragment_display_otp"
         tools:layout="@layout/fragment_display_otp" >
 

@@ -1,4 +1,4 @@
-package com.example.firebasetwo
+package com.example.firebasetwo.Log
 
 import android.os.Bundle
 import android.os.Handler
@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.firebasetwo.R
 import com.example.firebasetwo.databinding.FragmentDisplayOtpBinding
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -36,7 +36,7 @@ class DisplayOtp : Fragment() {
     private lateinit var Inputnum5: android.widget.EditText
     private lateinit var Inputnum6: android.widget.EditText
 
-    private val args: DisplayOtpArgs by navArgs()
+    private val args: com.example.firebasetwo.DisplayOtpArgs by navArgs()
 
 
 

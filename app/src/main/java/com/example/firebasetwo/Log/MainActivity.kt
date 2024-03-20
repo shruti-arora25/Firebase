@@ -1,9 +1,10 @@
-package com.example.firebasetwo
+package com.example.firebasetwo.Log
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.example.firebasetwo.R
 import com.example.firebasetwo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

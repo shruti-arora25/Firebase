@@ -1,4 +1,4 @@
-package com.example.firebasetwo
+package com.example.firebasetwo.Log
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -1,15 +1,13 @@
-package com.example.firebasetwo
+package com.example.firebasetwo.Log
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.example.firebasetwo.R
 import com.example.firebasetwo.databinding.FragmentHomeBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
