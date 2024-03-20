@@ -16,6 +16,8 @@ class create_notes : Fragment() {
 
     private lateinit var bind: FragmentCreateNotesBinding
 
+    val viewModel:
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
