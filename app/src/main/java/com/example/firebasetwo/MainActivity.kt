@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         navC=findNavController(R.id.fragmentContainerView)
-        return super.onSupportNavigateUp()||super.onSupportNavigateUp()
+        return super.onSupportNavigateUp()
     }
 
 

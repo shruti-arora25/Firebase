@@ -22,12 +22,13 @@ class NotesActivity : AppCompatActivity() {
 
         bind.saveNote.setOnClickListener {
 
-
             val notes = bind.noteWrite.text.toString()
 
             if (notes.isNotEmpty()) {
 
+
                 val sharedEdit = sharedPref.edit()
+
 
                 sharedEdit.putString("Note", notes)
                 sharedEdit.apply()
@@ -52,4 +53,11 @@ class NotesActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return super.onSupportNavigateUp()
+    }
+
 }
+
+

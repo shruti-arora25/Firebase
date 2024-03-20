@@ -132,9 +132,8 @@ class DisplayOtp : Fragment() {
         Inputnum4.addTextChangedListener(EditTextWatcher(Inputnum4))
         Inputnum5.addTextChangedListener(EditTextWatcher(Inputnum5))
         Inputnum6.addTextChangedListener(EditTextWatcher(Inputnum6))
-
-
     }
+
 
     private fun signInWithPhoneCredentials(credential: PhoneAuthCredential) {
         Log.e("Tag--------------->", "Authentication Complete")
@@ -152,8 +151,6 @@ class DisplayOtp : Fragment() {
                     Toast.makeText(context, "Code is not valid", Toast.LENGTH_SHORT).show()
                 }
             }
-
-
         }
     }
 
@@ -174,9 +171,8 @@ class DisplayOtp : Fragment() {
     private var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
             signInWithPhoneCredentials(credential)
-
-
         }
+
 
         override fun onVerificationFailed(e: FirebaseException) {
             if (e is FirebaseAuthInvalidCredentialsException) {
@@ -189,7 +185,8 @@ class DisplayOtp : Fragment() {
                 )
                     .show()
 
-            } else if (e is FirebaseTooManyRequestsException) {
+            }
+            else if (e is FirebaseTooManyRequestsException) {
                 Toast.makeText(context, "On Verification failed" + e.toString(), Toast.LENGTH_SHORT)
                     .show()
             }
