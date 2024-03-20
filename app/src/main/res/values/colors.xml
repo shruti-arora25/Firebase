@@ -5,6 +5,10 @@
     <color name="blueGreen">#75E6DA</color>
     <color name="grey">#808080</color>
     <color name="Darkgrey">#333333</color>
+    <color name="red">#FF0000</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green">#00FF00</color>
+
 
 
 </resources>
