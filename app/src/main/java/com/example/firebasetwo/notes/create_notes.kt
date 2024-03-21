@@ -16,13 +16,9 @@ import java.util.Date
 
 class create_notes : Fragment() {
 
-    var priority = "1"
-
+    private var priority = "1"
     private lateinit var bind: FragmentCreateNotesBinding
-
     private val viewModel:notesViewM by viewModels()
-
-
 
 
     override fun onCreateView(
@@ -57,7 +53,6 @@ class create_notes : Fragment() {
             bind.reddot.setImageResource(0)
             bind.greendot.setImageResource(0)
         }
-
 
         return bind.root
     }

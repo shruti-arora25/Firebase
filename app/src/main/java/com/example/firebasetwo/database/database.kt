@@ -26,15 +26,16 @@ abstract class database : RoomDatabase() {
                 return tempInstance
             }
 
+
             synchronized(this) {
                 val roomDatabaseInstance =
                     Room.databaseBuilder(context, database::class.java, "Notes")
+                        .allowMainThreadQueries()
                        .build()
 
                 INSTANCE = roomDatabaseInstance
-                return return roomDatabaseInstance
+                 return roomDatabaseInstance
             }
-
         }
     }
 }

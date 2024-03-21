@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:elevation="8dp"
-        app:cardBackgroundColor="@color/grey"
+        app:cardBackgroundColor="@color/blueGreen"
         app:cardCornerRadius="8dp">
         <View
             android:id="@+id/prioritylist"

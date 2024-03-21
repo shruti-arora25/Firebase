@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firebasetwo.R
@@ -20,10 +18,6 @@ class all_notes : Fragment() {
     private lateinit var bind:FragmentAllNotesBinding
     private val viewM: notesViewM by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,16 +26,8 @@ class all_notes : Fragment() {
 
         bind = FragmentAllNotesBinding.inflate(layoutInflater, container, false)
 
-        viewM.getNotes().observe(viewLifecycleOwner
-        ) {
+        init()
 
-                notesList: List<Notes> ->
-
-            bind.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-            bind.recyclerView.adapter = adapter(requireContext(), notesList)
-
-
-        }
 
 
         bind.addBtn.setOnClickListener {
@@ -50,6 +36,20 @@ class all_notes : Fragment() {
 
 
         return bind.root
+    }
+
+
+    private fun init(){
+
+        viewM.getNotes().observe(viewLifecycleOwner
+        ) {
+                notesList: List<Notes> ->
+
+            bind.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+            bind.recyclerView.adapter = adapter(requireContext(), notesList)
+
+        }
+
     }
 
 

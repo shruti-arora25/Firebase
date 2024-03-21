@@ -4,6 +4,12 @@ plugins {
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs")  //for directions
 
+
+    id("kotlin-kapt")//for annotations
+
+
+
+
 }
 
 android {
@@ -46,15 +52,14 @@ dependencies {
 
     implementation("com.google.firebase:firebase-firestore:24.10.3")
 
-    val nav_version = "2.7.7"
     val room_version = "2.6.1"
 
     implementation("androidx.room:room-runtime:$room_version")
-
     implementation("androidx.room:room-ktx:$room_version")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 
 
     val lifecycle_version = "2.7.0"
@@ -64,14 +69,16 @@ dependencies {
 
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    // Lifecycles only (without ViewModel or LiveData)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+
 
 
     // if using Java8, use the following instead of lifecycle-compiler
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
 
+
+    val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
