@@ -26,7 +26,7 @@ class splash_screen : Fragment() {
             {
                 findNavController().navigate(R.id.action_splash_screen_to_all_notes)
             }
-            ,3000)
+            ,2200)
 
 
         return inflater.inflate(R.layout.fragment_splash_screen, container, false)

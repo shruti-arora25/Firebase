@@ -4,7 +4,6 @@ plugins {
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs")  //for directions
 
-
     id("kotlin-kapt")//for annotations
 
 

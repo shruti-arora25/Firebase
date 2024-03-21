@@ -28,16 +28,23 @@ class adapter(val context: Context, val notesList: List<Notes>) :
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: myVH, position: Int) {
 
-        val data=notesList[position]
+        val data = notesList[position]
 
-        holder.bind.titlelist.text=data.title
-        holder.bind.subtitlelist.text=data.subtitle
-        holder.bind.datelist.text=data.date
-        when(data.priority){
+        holder.bind.titlelist.text = data.title
+        holder.bind.subtitlelist.text = data.subtitle
+        holder.bind.datelist.text = data.date
+        when (data.priority) {
 
-            "1"-> holder.bind.prioritylist.setBackgroundColor(R.color.green)
-            "2"-> holder.bind.prioritylist.setBackgroundColor(R.color.yellow)
-            "3"-> holder.bind.prioritylist.setBackgroundColor(R.color.red)
+            "1" -> {holder.bind.prioritylist.setBackgroundColor(R.color.green)}
+            "2" -> {holder.bind.prioritylist.setBackgroundColor(R.color.yellow)}
+            "3" -> {holder.bind.prioritylist.setBackgroundColor(R.color.red)}
+
+        }
+
+            holder.bind.root.setOnClickListener{
+                val directions=
+
+            }
 
 
         }

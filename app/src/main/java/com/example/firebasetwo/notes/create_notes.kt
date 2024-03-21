@@ -30,6 +30,12 @@ class create_notes : Fragment() {
         bind = FragmentCreateNotesBinding.inflate(layoutInflater, container, false)
 
 
+
+
+        val directions=create_notesDirections.actionCreateNotesToAllNotes()
+
+
+
         bind.saveNote.setOnClickListener {
             createNote(it)
         }
@@ -43,14 +49,14 @@ class create_notes : Fragment() {
         }
 
         bind.reddot.setOnClickListener {
-            priority = "2"
+            priority = "3"
             bind.reddot.setImageResource(R.drawable.baseline_done_24)
             bind.greendot.setImageResource(0)
             bind.yellowdot.setImageResource(0)
         }
 
         bind.yellowdot.setOnClickListener {
-            priority = "3"
+            priority = "2"
             bind.yellowdot.setImageResource(R.drawable.baseline_done_24)
             bind.reddot.setImageResource(0)
             bind.greendot.setImageResource(0)
