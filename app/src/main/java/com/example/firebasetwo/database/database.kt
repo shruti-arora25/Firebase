@@ -1,12 +1,15 @@
 package com.example.firebasetwo.database
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.firebasetwo.dao.Dao
+import com.example.firebasetwo.model.Notes
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
 
+@Database(entities=[Notes::class], version = 1, exportSchema = false)
 abstract class database : RoomDatabase() {
 
     abstract fun MyNotesDao(): Dao
@@ -25,7 +28,8 @@ abstract class database : RoomDatabase() {
 
             synchronized(this) {
                 val roomDatabaseInstance =
-                    Room.databaseBuilder(context, database::class.java, "Notes").build()
+                    Room.databaseBuilder(context, database::class.java, "Notes")
+                       .build()
 
                 INSTANCE = roomDatabaseInstance
                 return return roomDatabaseInstance

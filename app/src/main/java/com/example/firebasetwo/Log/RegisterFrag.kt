@@ -212,7 +212,6 @@ class RegisterFrag : Fragment() {
         override fun onVerificationFailed(e: FirebaseException) {
             if (e is FirebaseAuthInvalidCredentialsException) {
                 Log.d("Tag------->", "failed")
-
                 Toast.makeText(
                     context,
                     "Verification failed due to " + e.toString(),
@@ -220,7 +219,7 @@ class RegisterFrag : Fragment() {
                 )
                     .show()
             } else if (e is FirebaseTooManyRequestsException) {
-                Toast.makeText(context, "On Verification failed" + e.toString(), Toast.LENGTH_SHORT)
+                Toast.makeText(context, "failed" + e.toString(), Toast.LENGTH_SHORT)
                     .show()
             }
         }

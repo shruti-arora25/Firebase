@@ -5,9 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firebasetwo.R
+import com.example.firebasetwo.ViewModel.notesViewM
+import com.example.firebasetwo.adapters.adapter
+import com.example.firebasetwo.databinding.FragmentAllNotesBinding
+import com.example.firebasetwo.model.Notes
 
 class all_notes : Fragment() {
+    private lateinit var bind:FragmentAllNotesBinding
+    private val viewM: notesViewM by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +29,27 @@ class all_notes : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_notes, container, false)
+
+        bind = FragmentAllNotesBinding.inflate(layoutInflater, container, false)
+
+        viewM.getNotes().observe(viewLifecycleOwner
+        ) {
+
+                notesList: List<Notes> ->
+
+            bind.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+            bind.recyclerView.adapter = adapter(requireContext(), notesList)
+
+
+        }
+
+
+        bind.addBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_all_notes_to_create_notes)
+        }
+
+
+        return bind.root
     }
 
 

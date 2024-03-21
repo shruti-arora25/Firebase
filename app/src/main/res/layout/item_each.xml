@@ -12,6 +12,7 @@
         app:cardBackgroundColor="@color/grey"
         app:cardCornerRadius="8dp">
         <View
+            android:id="@+id/prioritylist"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/dot"
@@ -25,14 +26,17 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/titlelist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:text="Any......"
+
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/subtitlelist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
@@ -42,6 +46,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/datelist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"

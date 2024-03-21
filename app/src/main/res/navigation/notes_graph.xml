@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notes_graph"
+    app:startDestination="@id/splash_screen">
+
+    <fragment
+        android:id="@+id/splash_screen"
+        android:name="com.example.firebasetwo.notes.splash_screen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splash_screen_to_all_notes"
+            app:destination="@id/all_notes" />
+    </fragment>
+    <fragment
+        android:id="@+id/all_notes"
+        android:name="com.example.firebasetwo.notes.all_notes"
+        android:label="fragment_all_notes"
+        tools:layout="@layout/fragment_all_notes" >
+        <action
+            android:id="@+id/action_all_notes_to_create_notes"
+            app:destination="@id/create_notes" />
+    </fragment>
+    <fragment
+        android:id="@+id/create_notes"
+        android:name="com.example.firebasetwo.notes.create_notes"
+        android:label="fragment_create_notes"
+        tools:layout="@layout/fragment_create_notes" >
+        <action
+            android:id="@+id/action_create_notes_to_all_notes"
+            app:destination="@id/all_notes" />
+    </fragment>
+</navigation>

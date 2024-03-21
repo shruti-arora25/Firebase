@@ -53,13 +53,24 @@ dependencies {
 
     implementation("androidx.room:room-ktx:$room_version")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
 
+    val lifecycle_version = "2.7.0"
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
 
 
-
+    // if using Java8, use the following instead of lifecycle-compiler
+    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
 
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")

@@ -5,18 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.firebasetwo.R
+import com.example.firebasetwo.ViewModel.notesViewM
 import com.example.firebasetwo.databinding.FragmentCreateNotesBinding
+import com.example.firebasetwo.model.Notes
 import java.util.Date
 
 
 class create_notes : Fragment() {
 
-    var priority = 1
+    var priority = "1"
 
     private lateinit var bind: FragmentCreateNotesBinding
 
-    val viewModel:
+    private val viewModel:notesViewM by viewModels()
+
+
 
 
     override fun onCreateView(
@@ -28,47 +34,50 @@ class create_notes : Fragment() {
 
         bind.saveNote.setOnClickListener {
             createNote(it)
-
-
         }
 
 
-
         bind.greendot.setOnClickListener {
-            priority = 1
+            priority = "1"
             bind.greendot.setImageResource(R.drawable.baseline_done_24)
             bind.reddot.setImageResource(0)
             bind.yellowdot.setImageResource(0)
         }
 
         bind.reddot.setOnClickListener {
-            priority = 2
+            priority = "2"
             bind.reddot.setImageResource(R.drawable.baseline_done_24)
             bind.greendot.setImageResource(0)
             bind.yellowdot.setImageResource(0)
         }
 
         bind.yellowdot.setOnClickListener {
-            priority = 3
+            priority = "3"
             bind.yellowdot.setImageResource(R.drawable.baseline_done_24)
             bind.reddot.setImageResource(0)
             bind.greendot.setImageResource(0)
         }
 
 
-
-
         return bind.root
     }
 
     private fun createNote(it: View) {
-        val title = bind.addTitle.text
-        val subtitle = bind.AddSubtitle.text
-        val note = bind.AddNote.text
+        val title = bind.addTitle.text.toString()
+        val subtitle = bind.AddSubtitle.text.toString()
+        val note = bind.AddNote.text.toString()
 
         val d = Date()
 
-        var date = android.text.format.DateFormat.format("MMMM d, YYYY ", d.time)
+        var date = android.text.format.DateFormat.format("MMMM d, YYYY ", d.time).toString()
+
+        val data=Notes(id =null,title=title, subtitle=subtitle,notes=note,priority=priority, date = date)
+        
+        viewModel.addNotes(data)
+
+
+        Toast.makeText(context,"Note saved!",Toast.LENGTH_SHORT).show()
+
 
     }
 

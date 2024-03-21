@@ -1,20 +1,32 @@
 package com.example.firebasetwo.ViewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.firebasetwo.Repo.NotesRepo
-import com.example.firebasetwo.dao.Dao
 import com.example.firebasetwo.database.database
 import com.example.firebasetwo.model.Notes
 
-class notesViewM(application: Application) : AndroidViewModel(application) {
+    class notesViewM(application: Application) : AndroidViewModel(application) {
 
-    val repository: NotesRepo
+    var repository: NotesRepo
 
     init {
-        val dao = database.getDbInstance(application).MyNotesDao()
-        repository = NotesRepo(dao)
+
+        try {
+            val dao = database.getDbInstance(application).MyNotesDao()
+            repository = NotesRepo(dao)
+        } catch (e: Exception) {
+            Log.e("ViewModelInit", "Error initializing ViewModel", e)
+            // Handle the error appropriately
+
+
+            val dao = database.getDbInstance(application).MyNotesDao()
+            repository = NotesRepo(dao)
+        }
+
+
     }
 
     fun addNotes(notes: Notes) {
