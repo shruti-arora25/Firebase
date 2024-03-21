@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.firebasetwo.R
 import com.example.firebasetwo.databinding.ItemEachBinding
 import com.example.firebasetwo.model.Notes
+import com.example.firebasetwo.notes.create_notes
 
 class adapter(val context: Context, val notesList: List<Notes>) :
     RecyclerView.Adapter<adapter.myVH>() {
@@ -42,7 +43,7 @@ class adapter(val context: Context, val notesList: List<Notes>) :
         }
 
             holder.bind.root.setOnClickListener{
-                val directions=
+              //  val directions
 
             }
 
