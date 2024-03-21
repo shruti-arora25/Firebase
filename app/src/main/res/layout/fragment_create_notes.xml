@@ -54,23 +54,21 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@drawable/dot"
+                android:background="@drawable/reddot"
                 android:id="@+id/reddot"/>
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
-                android:backgroundTint="@color/yellow"
-                android:background="@drawable/dot"
+                android:background="@drawable/yellodot"
                 android:id="@+id/yellowdot"/>
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
-                android:backgroundTint="@color/green"
-                android:background="@drawable/dot"
+                android:background="@drawable/greendot"
                 android:id="@+id/greendot"/>
 
         </LinearLayout>

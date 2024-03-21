@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.firebasetwo.R
 import com.example.firebasetwo.ViewModel.notesViewM
 import com.example.firebasetwo.databinding.FragmentCreateNotesBinding
@@ -70,8 +72,8 @@ class create_notes : Fragment() {
         
         viewModel.addNotes(data)
 
-
         Toast.makeText(context,"Note saved!",Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_create_notes_to_all_notes,null,NavOptions.Builder().setPopUpTo(R.id.create_notes,true).build())
 
 
     }
