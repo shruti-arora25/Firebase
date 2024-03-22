@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs")  //for directions
+    id("kotlin-parcelize")
 
     id("kotlin-kapt")//for annotations
 

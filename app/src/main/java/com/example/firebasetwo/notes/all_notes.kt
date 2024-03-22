@@ -77,10 +77,10 @@ class all_notes : Fragment(), adapter.navigateListener {
 
     override fun onItemClicked(data: Notes) {
 
-//        val directions=all_notesDirections.actionAllNotesToNotesEdit(data)
-//        findNavController().navigate(directions)
-//
-//
+        val directions=all_notesDirections.actionAllNotesToNotesEdit(data)
+        findNavController().navigate(directions)
+
+
 
 
     }

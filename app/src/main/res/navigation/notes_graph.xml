@@ -46,7 +46,8 @@
         android:label="fragment_notes_edit"
         tools:layout="@layout/fragment_notes_edit">
 
-<!--        <argument android:name="data"-->
-<!--            app:argType="com.example.firebasetwo.model.Notes" />-->
+<argument
+            android:name="data"
+            app:argType="com.example.firebasetwo.model.Notes" />
     </fragment>
 </navigation>
