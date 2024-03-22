@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.NavArgs
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.firebasetwo.R
 import com.example.firebasetwo.ViewModel.notesViewM
 import com.example.firebasetwo.databinding.FragmentCreateNotesBinding
@@ -18,9 +21,11 @@ import java.util.Date
 
 class create_notes : Fragment() {
 
+
     private var priority = "1"
     private lateinit var bind: FragmentCreateNotesBinding
     private val viewModel:notesViewM by viewModels()
+
 
 
     override fun onCreateView(
@@ -28,11 +33,7 @@ class create_notes : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         bind = FragmentCreateNotesBinding.inflate(layoutInflater, container, false)
-
-
-
-
-        val directions=create_notesDirections.actionCreateNotesToAllNotes()
+        
 
 
 
@@ -71,7 +72,6 @@ class create_notes : Fragment() {
         val note = bind.AddNote.text.toString()
 
         val d = Date()
-
         var date = android.text.format.DateFormat.format("MMMM d, YYYY ", d.time).toString()
 
         val data=Notes(id =null,title=title, subtitle=subtitle,notes=note,priority=priority, date = date)

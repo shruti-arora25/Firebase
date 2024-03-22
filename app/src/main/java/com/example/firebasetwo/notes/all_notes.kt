@@ -14,10 +14,9 @@ import com.example.firebasetwo.adapters.adapter
 import com.example.firebasetwo.databinding.FragmentAllNotesBinding
 import com.example.firebasetwo.model.Notes
 
-class all_notes : Fragment() {
-    private lateinit var bind:FragmentAllNotesBinding
+class all_notes : Fragment(), adapter.navigateListener {
+    private lateinit var bind: FragmentAllNotesBinding
     private val viewM: notesViewM by viewModels()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,31 +25,65 @@ class all_notes : Fragment() {
 
         bind = FragmentAllNotesBinding.inflate(layoutInflater, container, false)
 
-        init()
 
+//
+//        arguments?.getBoolean("Create_NEW_user")
+//        val data = DataClass()
+//
+//            Gson().toJson(dataClass())
+////        Get Data
+//        Gson().fromJson(arguments?.getBoolean("Create_NEW_user") , Data::class.java)
+//
+//
 
-
-        bind.addBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_all_notes_to_create_notes)
-        }
+//                arguments?.getBoolean("Create_NEW_user")
+//            )
+//        }
+//
+//        val bundle = Bundle()
+//        bundle.putString("","")
 
 
         return bind.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    private fun init(){
+        init()
 
-        viewM.getNotes().observe(viewLifecycleOwner
-        ) {
-                notesList: List<Notes> ->
+        bind.addBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_all_notes_to_create_notes)
+
+        }
+
+
+
+    }
+
+
+    private fun init() {
+
+        viewM.getNotes().observe(
+            viewLifecycleOwner
+        ) { notesList: List<Notes> ->
 
             bind.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-            bind.recyclerView.adapter = adapter(requireContext(), notesList)
+            bind.recyclerView.adapter = adapter(this,requireContext(), notesList)
 
         }
 
     }
 
+    override fun onItemClicked(data: Notes) {
+
+//        val directions=all_notesDirections.actionAllNotesToNotesEdit(data)
+//        findNavController().navigate(directions)
+//
+//
+
 
     }
+
+
+}

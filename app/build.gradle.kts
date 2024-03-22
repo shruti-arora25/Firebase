@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -47,6 +48,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation("com.google.firebase:firebase-firestore:24.10.3")
@@ -59,6 +61,8 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+   // kapt ("androidx.room:room-compiler:2.6.1")
+
 
 
     val lifecycle_version = "2.7.0"

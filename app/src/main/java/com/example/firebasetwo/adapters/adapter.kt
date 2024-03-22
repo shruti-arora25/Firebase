@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.firebasetwo.R
 import com.example.firebasetwo.databinding.ItemEachBinding
 import com.example.firebasetwo.model.Notes
-import com.example.firebasetwo.notes.create_notes
 
-class adapter(val context: Context, val notesList: List<Notes>) :
+class adapter(private val listener:navigateListener,val context: Context, val notesList: List<Notes>) :
     RecyclerView.Adapter<adapter.myVH>() {
 
 
@@ -31,9 +30,9 @@ class adapter(val context: Context, val notesList: List<Notes>) :
 
         val data = notesList[position]
 
-        holder.bind.titlelist.text = data.title
-        holder.bind.subtitlelist.text = data.subtitle
-        holder.bind.datelist.text = data.date
+        holder.bind.titlelist.text = data.title.toString()
+        holder.bind.subtitlelist.text = data.subtitle.toString()
+        holder.bind.datelist.text = data.date.toString()
         when (data.priority) {
 
             "1" -> {holder.bind.prioritylist.setBackgroundColor(R.color.green)}
@@ -43,12 +42,14 @@ class adapter(val context: Context, val notesList: List<Notes>) :
         }
 
             holder.bind.root.setOnClickListener{
-              //  val directions
 
+                listener.onItemClicked(data)
             }
-
 
         }
 
+    interface navigateListener{
+        fun onItemClicked(data:Notes)
     }
-}
+
+    }

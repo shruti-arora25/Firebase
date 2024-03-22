@@ -63,5 +63,7 @@
         <argument
             android:name="token"
             app:argType="com.google.firebase.auth.PhoneAuthProvider$ForceResendingToken" />
+
+
     </fragment>
 </navigation>

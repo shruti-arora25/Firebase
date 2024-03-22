@@ -22,6 +22,11 @@
         <action
             android:id="@+id/action_all_notes_to_create_notes"
             app:destination="@id/create_notes" />
+        <action
+            android:id="@+id/action_all_notes_to_notesEdit"
+            app:destination="@id/notesEdit" />
+
+
     </fragment>
     <fragment
         android:id="@+id/create_notes"
@@ -31,8 +36,17 @@
         <action
             android:id="@+id/action_create_notes_to_all_notes"
             app:destination="@id/all_notes" />
-        <argument
-            android:name="data"
-            app:argType="com.example.firebasetwo.model.notes" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/notesEdit"
+        android:name="com.example.firebasetwo.notes.notesEdit"
+        android:label="fragment_notes_edit"
+        tools:layout="@layout/fragment_notes_edit">
+
+<!--        <argument android:name="data"-->
+<!--            app:argType="com.example.firebasetwo.model.Notes" />-->
     </fragment>
 </navigation>
