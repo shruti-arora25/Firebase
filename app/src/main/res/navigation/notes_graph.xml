@@ -49,5 +49,8 @@
 <argument
             android:name="data"
             app:argType="com.example.firebasetwo.model.Notes" />
+        <action
+            android:id="@+id/action_notesEdit_to_all_notes"
+            app:destination="@id/all_notes" />
     </fragment>
 </navigation>

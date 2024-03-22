@@ -54,10 +54,7 @@ class all_notes : Fragment(), adapter.navigateListener {
 
         bind.addBtn.setOnClickListener {
             findNavController().navigate(R.id.action_all_notes_to_create_notes)
-
         }
-        
-
     }
 
 
