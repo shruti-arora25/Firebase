@@ -14,7 +14,7 @@ import com.example.firebasetwo.model.Notes
 class notesEdit : Fragment() {
 
     private lateinit var binding: FragmentNotesEditBinding
-    //val args:notesEditArgs by navArgs()
+    val args:notesEditArgs by navArgs()
 
     private lateinit var notes:Notes
 
@@ -27,12 +27,12 @@ class notesEdit : Fragment() {
         binding = FragmentNotesEditBinding.inflate(layoutInflater, container, false)
 
 
-//        notes=args.data
-//
-//
-//        binding.addTitle2.setText(notes.title)
-//        binding.AddSubtitle2.setText(args.data.subtitle)
-//        binding.AddNote2.setText(args.data.notes)
+        notes=args.data
+
+
+        binding.addTitle2.setText(notes.title)
+        binding.AddSubtitle2.setText(args.data.subtitle)
+        binding.AddNote2.setText(args.data.notes)
 
 
         return binding.root
