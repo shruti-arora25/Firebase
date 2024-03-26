@@ -12,9 +12,9 @@ class notesViewM(application: Application) : AndroidViewModel(application) {
     val repository: NotesRepo
 
     init {
+
         val dao = database.getDbInstance(application).MyNotesDao()
         repository = NotesRepo(dao)
-
     }
 
     fun addNotes(notes: Notes) {

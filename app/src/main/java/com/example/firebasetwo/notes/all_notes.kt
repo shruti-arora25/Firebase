@@ -62,7 +62,8 @@ class all_notes : Fragment(), adapter.navigateListener {
 
         viewM.getNotes().observe(
             viewLifecycleOwner
-        ) { notesList: List<Notes> ->
+        ) {
+            notesList: List<Notes> ->
 
             bind.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
             bind.recyclerView.adapter = adapter(this,requireContext(), notesList)

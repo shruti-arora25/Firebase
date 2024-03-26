@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.firebasetwo.R
 
@@ -24,7 +25,7 @@ class splash_screen : Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                findNavController().navigate(R.id.action_splash_screen_to_all_notes)
+                findNavController().navigate(R.id.action_splash_screen_to_all_notes,null,NavOptions.Builder().setPopUpTo(R.id.splash_screen,true).build())
             }
             ,2200)
 

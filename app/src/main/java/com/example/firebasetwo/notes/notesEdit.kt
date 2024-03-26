@@ -68,18 +68,14 @@ class notesEdit : Fragment() {
 
         binding.saveNote.setOnClickListener {
 
-            updateNotes(it)
+            updatedNotes(it)
 
         }
 
-
-
         return binding.root
-
-
     }
 
-    private fun updateNotes(it: View) {
+    private fun updatedNotes(it: View) {
         val title = binding.addTitle2.text.toString()
         val subtitle = binding.AddSubtitle2.text.toString()
         val note = binding.AddNote2.text.toString()
